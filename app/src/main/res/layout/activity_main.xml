@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.michaeljordanr.androidroom_crud.person.ui.MainActivity">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="personViewModel"
+            type="com.michaeljordanr.androidroom_crud.person.viewmodel.PersonViewModel"/>
+
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/ed_first_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="5dp"
+                android:hint="first name"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/ed_last_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="5dp"
+                android:hint="last name"
+                android:inputType="text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ed_first_name"
+                app:layout_constraintTop_toBottomOf="@+id/ed_first_name"
+                app:layout_constraintVertical_bias="0.048" />
+
+            <Button
+                android:id="@+id/bt_1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Button 1"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toStartOf="@+id/ed_last_name"
+                app:layout_constraintTop_toBottomOf="@+id/ed_last_name"/>
+
+            <Button
+                android:id="@+id/bt_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Button 1"
+                app:layout_constraintWidth_default="percent"
+                app:layout_constraintWidth_percent="0.5"
+                app:layout_constraintStart_toEndOf="@+id/bt_1"
+                app:layout_constraintTop_toTopOf="@+id/bt_1"/>
+
+            <FrameLayout
+                android:id="@+id/fragment_list_people"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/bt_2"
+                app:layout_constraintStart_toStartOf="@+id/bt_2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:background="#333"
+                android:layout_margin="8dp"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_done"
+            android:layout_gravity="bottom|end"/>
+
+        <View
+            android:id="@+id/dummy"
+            android:layout_width="1dp"
+            android:layout_height="16dp"
+            app:layout_anchor="@+id/fab"
+            app:layout_anchorGravity="top|right|end" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|top"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_delete"
+            app:layout_anchor="@+id/dummy"
+            app:layout_anchorGravity="top|right|end" />
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
