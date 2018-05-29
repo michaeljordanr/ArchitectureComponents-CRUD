@@ -1,9 +1,9 @@
-# Android-Room-CRUD-Sample
-Sample Android application used to practice the [Android Architecture component Room](https://developer.android.com/topic/libraries/architecture/room.html). This application is a simple CRUD example (Create, Read, Update and Delete) implementing Room persistence.
+# ArchitectureComponents-CRUD
+Sample Android application used to practice the [Android Architecture Components](https://developer.android.com/topic/libraries/architecture/). This application is a simple CRUD example (Create, Read, Update and Delete) implementing Architecture Components.
 
 # License
 ```
-Copyright 2017 Husayn Abdul Hakeem
+Copyright 2018 Michael Jordan Ribeiro Silva
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
