@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -49,16 +50,16 @@ public class PersonFragment extends Fragment {
     private void subscribeToModel(final PersonViewModel model) {
 
         // Observe product data
-        model.getObservablePersons().observe(this, new Observer<List<PersonEntity>>() {
-            @Override
-            public void onChanged(@Nullable List<PersonEntity> personEntities) {
-                if(personEntities != null){
-                    personAdapter.setPersonList(personEntities);
-                    personAdapter.notifyDataSetChanged();
-                }
-
-                binding.executePendingBindings();
+        model.getObservablePersons().observe(this, personEntities -> {
+            if(personEntities != null && personEntities.size() > 0){
+                personAdapter.setPersonList(personEntities);
+            }else{
+                personAdapter.setPersonList(null);
+                Toast.makeText(getActivity(), "All deleted", Toast.LENGTH_SHORT).show();
             }
+
+            personAdapter.notifyDataSetChanged();
+            binding.executePendingBindings();
         });
     }
 }
