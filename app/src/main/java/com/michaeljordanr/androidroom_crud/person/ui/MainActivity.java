@@ -1,12 +1,21 @@
 package com.michaeljordanr.androidroom_crud.person.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.transition.Slide;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -17,6 +26,7 @@ import com.michaeljordanr.androidroom_crud.databinding.ActivityMainBinding;
 import com.michaeljordanr.androidroom_crud.person.db.entity.PersonEntity;
 import com.michaeljordanr.androidroom_crud.person.viewmodel.PersonViewModel;
 import com.michaeljordanr.androidroom_crud.utilities.DataGenerator;
+import com.tooltip.Tooltip;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
+
+        Tooltip tooltip = new Tooltip.Builder(binding.bt1)
+                .setBackgroundColor(getResources().getColor(R.color.purple_531e6d))
+                .setTextColor(getResources().getColor(android.R.color.white))
+                .setTypeface(Typeface.DEFAULT_BOLD)
+                .setText("Hello tooltip")
+                .show();
 
         //DataGenerator.with(database).generatePeople();
 
@@ -54,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
                     .add(R.id.fragment_list_people, fragment, PersonFragment.class.getName()).commit();
         }
 
+        Spinner sp = findViewById(R.id.sp);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                R.layout.support_simple_spinner_dropdown_item, new String[]{"teste", "teste", "teste"});
+        sp.setAdapter(adapter);
+
     }
 
     public void onOnClickInsert(View view){
@@ -65,6 +87,14 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplication(), person.firstName + " - " + person.lastName,
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void nextActivity(View view){
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.TOP);
+
+       // TransitionManager.beginDelayedTransition(this);
+        startActivity(new Intent(this, Main2Activity.class));
     }
 
     private boolean firstNameValidation(){

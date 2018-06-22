@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import java.util.List;
@@ -33,7 +34,9 @@ public class PersonFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_person, container, false);
         personAdapter = new PersonAdapter();
         binding.peopleList.setAdapter(personAdapter);
-
+        ArrayAdapter adapter = new ArrayAdapter(getActivity(), R.layout.spinner_style,
+                new String[]{"Teste","Teste","Teste","Teste","Teste"});
+        binding.sp.setAdapter(adapter);
         return binding.getRoot();
     }
 
